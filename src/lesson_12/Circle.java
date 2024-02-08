@@ -41,8 +41,20 @@ public class Circle {
     }
 
     public boolean intersects(Circle other) {
-        double distanceBetweenCenters = this.center.distanceTo(other.center);
-        return distanceBetweenCenters < this.radius + other.radius;
+        return intersects(this, other);
+    }
+
+    public static boolean intersects(Circle c1, Circle c2) {
+        double distanceBetweenCenters = c1.center.distanceTo(c2.center);
+        return distanceBetweenCenters < c1.radius + c2.radius;
+    }
+
+    public static void print(Circle circle) {
+        System.out.println(circle);
+    }
+
+    public void print() {
+        print(this);
     }
 
     public boolean fullyContains(Circle other) {
