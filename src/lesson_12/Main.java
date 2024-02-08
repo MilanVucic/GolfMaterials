@@ -2,8 +2,11 @@ package lesson_12;
 
 public class Main {
     public static void main(String[] args) {
-        Circle circle = new Circle(5);
-        Circle circle2 = new Circle(0, 8, 3);
+        Circle circle = new Circle(10);
+        Circle circle2 = new Circle(0, 8, 1.9);
+        Circle circle3 = new Circle(0, 8, 2.1);
+        System.out.println(circle.fullyContains(circle2));
+        System.out.println(circle.fullyContains(circle3));
     }
 
     private static void example() {

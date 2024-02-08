@@ -46,8 +46,8 @@ public class Circle {
     }
 
     public boolean fullyContains(Circle other) {
-        return false;
-        // todo finish the method
+        double distanceBetweenCenters = this.center.distanceTo(other.center);
+        return this.radius > other.radius + distanceBetweenCenters;
     }
 
     @Override
