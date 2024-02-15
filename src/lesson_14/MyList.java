@@ -1,6 +1,6 @@
 package lesson_14;
 
-public class MyList<T>{
+public class MyList<T> implements MyListInterface<T>{
     private Node<T> head;
 
     public void add(T value) {
@@ -14,6 +14,16 @@ public class MyList<T>{
             }
             temp.next = element;
         }
+    }
+
+    public void addAtStart(T value) {
+        // 1 -> 2 -> 5; head -> 1;
+        // insert 50 at start
+        // 50 -> 1
+        // head -> 50
+        Node<T> element = new Node<>(value);
+        element.next = head;
+        head = element;
     }
 
     // todo Implement inserting an element at position
@@ -38,7 +48,7 @@ public class MyList<T>{
         return null;
     }
 
-    public int getSize() {
+    public int size() {
         Node<T> temp = head;
         int counter = 0;
         while (temp != null) {

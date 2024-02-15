@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         MyList<String> list = new MyList<>();
-        System.out.println(list.getSize());
+        System.out.println(list.size());
         list.add("Milan");
         list.add("Luca");
         list.add("Marco");
@@ -15,9 +15,9 @@ public class Main {
 
         System.out.println(list.get(2));
         System.out.println(list.get(0));
-        System.out.println(list.getSize());
+        System.out.println(list.size());
         list.add("asdasd");
-        System.out.println(list.getSize());
+        System.out.println(list.size());
     }
 
     private static void myArrayExample() {

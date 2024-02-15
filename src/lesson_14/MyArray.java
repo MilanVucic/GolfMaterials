@@ -1,18 +1,21 @@
 package lesson_14;
 
-public class MyArray<T> {
+public class MyArray<T> implements MyListInterface<T>{
+    public static final int INITIAL_CAPACITY = 10;
+    public static final double INCREASE_FACTOR = 2;
     private T[] array; // start array of length 5
     private int size;
 
     // array: "Milan", "Luca", "Max", "Marco", "Nicola"
     public MyArray() {
-        array = (T[]) new Object[5];
+        array = (T[]) new Object[INITIAL_CAPACITY];
     }
 
+    // addPerson(Person p); -> SQL -> db.execSQL("INSERT into PERSONS p.name)
     public void add(T element) {
         if (size == array.length) {
             // temp: null null null null null null null null null null null null
-            T[] temp = (T[]) new Object[array.length + 5];
+            T[] temp = (T[]) new Object[(int)(array.length * INCREASE_FACTOR)];
             for (int i = 0; i < array.length; i++) {
                 temp[i] = array[i];
             }
@@ -28,7 +31,7 @@ public class MyArray<T> {
         return array[index];
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
