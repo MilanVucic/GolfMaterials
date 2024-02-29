@@ -14,8 +14,17 @@ public class Main {
         // 2 -> is, an
         // 1 -> example, input
 
+        String input = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non urna eu nunc ullamcorper ultrices. Pellentesque ac tincidunt nunc. Praesent ipsum ex, tincidunt vel fermentum sit amet, suscipit at nibh. Aenean nec augue iaculis, facilisis odio eu, sodales enim. Nunc imperdiet metus ut neque dapibus lacinia. Nam quis arcu accumsan, semper nisi eget, rutrum tortor. Proin sit amet luctus orci, eu ornare neque. Nulla dapibus ligula neque, eu mattis felis sodales et.\n" +
+                "\n" +
+                "Praesent pretium, ligula ac lobortis fringilla, metus risus dignissim orci, nec vestibulum nisl sem sed dolor. Duis vitae efficitur nisi, pharetra dignissim sem. Phasellus faucibus ac purus vel accumsan. Donec ultrices est ut turpis tempor, id laoreet urna blandit. In leo justo, elementum ut posuere at, pretium id nisl. Morbi tempor convallis elit, vitae elementum tellus condimentum eu. Aliquam non lacus quis libero fringilla fringilla ut at sapien. Sed commodo, nibh eget ullamcorper eleifend, odio odio ullamcorper arcu, sed semper augue neque a eros. Nulla a arcu eget ante vulputate elementum. Donec in scelerisque tortor. Etiam semper erat nec lacus dapibus vehicula. Donec quis urna justo.\n" +
+                "\n" +
+                "Sed et risus id orci sagittis auctor. Ut vel dignissim augue. Mauris vel arcu a magna tristique sollicitudin. Ut dapibus porta velit, ut efficitur erat mattis eget. Suspendisse non mauris non massa tincidunt tempus ut in orci. Mauris odio nisl, posuere et tellus vitae, porttitor molestie ligula. Ut facilisis mollis turpis. Proin tincidunt dolor quis rutrum elementum. Mauris ultrices ut quam et egestas. Morbi id accumsan nisl, et tempus eros. Suspendisse hendrerit tellus diam, eu pharetra massa mattis non. Duis eleifend imperdiet luctus.\n" +
+                "\n" +
+                "Ut viverra, justo vel fermentum malesuada, nulla nunc cursus dui, id posuere tellus libero in metus. Cras laoreet turpis vel mauris dapibus placerat. Sed porta et est non tincidunt. Pellentesque consequat elementum sagittis. Duis magna nunc, cursus sed turpis vitae, convallis tristique tellus. Morbi eget nulla a magna scelerisque sagittis. Duis efficitur a ipsum id placerat. Maecenas nisi lacus, tincidunt at euismod eget, tincidunt quis tellus.\n" +
+                "\n" +
+                "Mauris ac scelerisque dui. Nulla facilisi. In hac habitasse platea dictumst. Nam hendrerit accumsan magna at viverra. Donec ac lacus ante. Nullam ut nibh vitae arcu gravida tincidunt. Etiam gravida euismod ante, at congue magna molestie at. Suspendisse porta quam vitae erat volutpat suscipit. Sed et libero sed turpis suscipit placerat.";
         Map<Integer, List<String>> map = getWordsByFrequency(
-                getWordFrequency("this this this is an example example input this is an this"));
+                getWordFrequency(input));
         for (Integer key : map.keySet()) {
             System.out.println(key +" -> " + map.get(key));
         }
@@ -50,8 +59,10 @@ public class Main {
 
     private static Map<String, Integer> getWordFrequency(String sentence) {
         Map<String, Integer> map = new HashMap<>();
-        String[] words = sentence.split(" ");
+        String[] words = sentence.split("\\s+");
         for (String word : words) {
+            word = word.replaceAll("[^\\p{IsAlphabetic}]", "");
+            word = word.toLowerCase(); // This, this
             if (map.containsKey(word)) {
                 map.put(word, map.get(word) + 1);
             } else {
